@@ -1,30 +1,54 @@
-NBA Player Props Prediction Model (ULTORN v5.2)
-A machine learning model that predicts NBA player prop outcomes for PrizePicks.
-What it does
+# NBA Player Props Prediction Model (ULTORN v5.2)
 
-Pulls live player stats using nba_api
-Runs logistic regression to calculate hit probability for each prop line
-Blends model probability, site projections, and matchup data into a combined score
-Sizes bets using Kelly Criterion
-Saves results to a tracked Excel sheet with color-coded confidence levels
+A Python-based analytics project that analyzes NBA player statistics and historical performance trends to generate player prop prediction scores.
 
-Tech Stack
+The project uses NBA data, statistical features, and machine learning to evaluate player performance against selected prop lines.
 
-Python
-nba_api
-scikit-learn
-pandas, numpy, openpyxl
+## What It Does
 
-How to run
+* Retrieves player game logs using `nba_api`
+* Retrieves team defensive rankings for matchup analysis
+* Processes player statistics including points, rebounds, assists, and three-pointers
+* Creates features using recent performance trends, usage, rest days, and opponent data
+* Uses logistic regression to generate probability estimates
+* Combines model probability with projection differences to create confidence scores
+* Exports prediction results into Excel for tracking
 
-Clone the repo
+## Built With
+
+* Python
+* nba_api
+* pandas
+* NumPy
+* scikit-learn
+* openpyxl
+
+## How It Works
+
+1. Player selections are loaded from an Excel input file.
+2. The program retrieves historical player statistics and matchup information.
+3. Statistics are processed into model features.
+4. A logistic regression model generates probability estimates.
+5. Results are ranked using combined confidence scores and saved into an Excel tracker.
+
+## Running the Project
+
 Install dependencies:
 
-pip install nba_api scikit-learn pandas numpy openpyxl
+```bash
+pip install -r requirements.txt
+```
 
-Add your picks to picks_today.xlsx
 Run the model:
 
+```bash
 python ultorn_model.py
+```
 
-Open ultorn_tracker.xlsx and fill in results nightly
+## Development Environment
+
+Built and tested using Visual Studio Code with Python.
+
+## Purpose
+
+Created as a personal project to explore Python programming, data analysis, and applying machine learning techniques to sports statistics.
