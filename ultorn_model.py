@@ -6,7 +6,6 @@
 # Run:  python3 ultorn_model.py
 # =============================================================================
 
-import re
 import time
 import warnings
 import numpy as np
@@ -31,8 +30,6 @@ TRACKER_FILE   = "ultorn_tracker.xlsx"
 SEASON         = "2024-25"
 ROLLING_GAMES  = 10
 MIN_GAMES      = 15
-BANKROLL       = 50.0
-KELLY_CAP      = 0.10
 PROB_THRESHOLD = 0.55
 SITE_EDGE_MIN  = 3.0
 COMBINED_MIN   = 0.60
@@ -308,12 +305,6 @@ def combined_score(model_prob, site_diff, line, today_proj_val):
     return round(sum(s * w for s, w in zip(scores, weights)) / sum(weights), 4)
 
 
-def kelly_bet(model_prob):
-    edge = model_prob - (1 - model_prob)
-    if edge <= 0:
-        return 0.0
-    return round(min(edge, KELLY_CAP) * BANKROLL, 2)
-
 # =============================================================================
 # EXCEL — clean, readable formatting
 # Columns: Date | Player | Team | Opp | Stat | Line | Site Proj | Site Diff
@@ -477,12 +468,6 @@ def run_model():
             print(f"  [SKIP] Not enough data: {name}")
             continue
 
-        comb  = combined_score(prob, pick.get("site_diff"), line, today_val)
-        bet   = kelly_bet(prob) if (prob >= PROB_THRESHOLD
-                                    and comb is not None
-                                    and comb >= COMBINED_MIN) else 0.0
-        hedge = round(bet * 0.15, 2)
-
         if comb and comb >= 0.70:
             flag = "STRONG"
         elif prob >= 0.65:
@@ -522,7 +507,6 @@ def run_model():
               f"${r['bet_size']:.2f}")
 
     total = sum(r["bet_size"] for r in strong)
-    print(f"\n  Total at risk: ${total:.2f} of ${BANKROLL:.2f} bankroll")
 
     print(f"\n  TOP 2 PICKS:")
     for r in results[:2]:
