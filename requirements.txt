@@ -1,0 +1,5 @@
+numpy
+pandas
+openpyxl
+scikit-learn
+nba_api
