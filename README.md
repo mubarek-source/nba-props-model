@@ -1,4 +1,4 @@
-# NBA Player Props Prediction Model (ULTORN v5.2)
+# NBA Player Analytics Model
 
 A Python-based analytics project that analyzes NBA player statistics and historical performance trends to generate player prop prediction scores.
 
