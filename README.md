@@ -2,7 +2,7 @@
 
 A Python-based analytics project that analyzes NBA player statistics and historical performance trends to generate player prop prediction scores.
 
-The project uses NBA data, statistical features, and machine learning to evaluate player performance against selected prop lines.
+The project uses NBA data, statistical features, and machine learning techniques to evaluate player performance against selected prop lines.
 
 ## What It Does
 
@@ -11,8 +11,8 @@ The project uses NBA data, statistical features, and machine learning to evaluat
 - Processes player statistics including points, rebounds, assists, and three-pointers
 - Creates features using recent performance trends, usage, rest days, and opponent data
 - Uses logistic regression to generate probability estimates
-- Combines model probability with input projection differences to create confidence scores
-- Exports prediction results into Excel for tracking
+- Combines model probability and projection differences into confidence scores
+- Exports prediction results into an Excel tracker
 
 ## Built With
 
@@ -25,9 +25,9 @@ The project uses NBA data, statistical features, and machine learning to evaluat
 
 ## How It Works
 
-1. Player selections are loaded from a user-provided Excel input file.
-2. The program retrieves historical player statistics and matchup information.
-3. Statistics are processed into model features.
+1. Player selections are loaded from an Excel input file.
+2. The program retrieves historical NBA statistics and matchup data.
+3. Player performance features are created from recent trends.
 4. A logistic regression model generates probability estimates.
 5. Results are ranked using combined confidence scores and saved into an Excel tracker.
 
